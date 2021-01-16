@@ -2,13 +2,13 @@
 
 namespace App\Controller\API;
 
+use App\Entity\Country;
 use App\Repository\CountryRepository;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Swagger\Annotations as SWG;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class CountryAction extends AbstractController
@@ -54,8 +54,18 @@ class CountryAction extends AbstractController
      *
      * @SWG\Tag(name="country")
      */
-    public function getCountry(int $id)
+    public function getCountry(SerializerInterface $serializer, Country $country)
     {
-        return $this->json($this->repository->find($id));
+        $json = $serializer->serialize(
+            $country,
+            'json',
+            ['groups' => 'basic']
+        );
+
+        return new Response(
+            $json,
+            Response::HTTP_OK,
+            ['content-type' => 'text/plain']
+        );
     }
 }

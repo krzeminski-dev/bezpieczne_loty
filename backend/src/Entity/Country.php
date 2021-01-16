@@ -6,7 +6,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
  * @ORM\Entity()
@@ -18,46 +17,54 @@ class Country
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"basic"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"basic"})
      */
     private $iso2;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"basic"})
      */
     private $iso3;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"basic"})
      */
     private $latitude;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"basic"})
      */
     private $longitude;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"basic"})
      */
     private $flag;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $population;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Continent::class, inversedBy="countries", cascade={"persist"}, fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity=Continent::class, inversedBy="countries", cascade={"persist"})
      */
     private $continent;
 
