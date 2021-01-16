@@ -15,15 +15,15 @@ import slide3 from '../../assets/images/slide3-virus.jpg';
 const slides = [
     {
         image: slide1,
-        text: 'Bardzo'
+        text: "",
     },
     {
         image: slide2,
-        text: 'Potężny'
+        text: "",
     },
     {
         image: slide3,
-        text: 'Slider'
+        text: "",
     },
 ];
 
@@ -51,9 +51,9 @@ class Slider extends Component{
             //left: `${active*100}%`
         }
         return(
-            <div className="outerWrap relative container rounded shadow-sm p-6 mt-6 bg-gray-500">
-                <div className="slider container rounded relative" style={styles}>
-                    <h1 className="rounded container slider__content text-white text-2xl h-full relative">
+            <div className="outerWrap relative container  shadow-sm  bg-gray-500">
+                <div className="slider container  relative" style={styles}>
+                    <h1 className=" container slider__content text-white text-2xl h-full relative">
                         <span className="slider__text absolute">{slides[active].text}</span>
                     </h1>
                 </div>

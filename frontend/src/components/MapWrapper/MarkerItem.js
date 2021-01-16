@@ -1,10 +1,15 @@
 import React from 'react';
-import {Marker} from 'react-leaflet';
+import {Marker, Popup} from 'react-leaflet';
 
-const MarkerItem = ({from}) => (
+const MarkerItem = ({x, y, country, number}) => (
     <Marker
-        position={[from[0], from[1]]}
+        // position={[from[0], from[1]]}
+        position={[x, y]}
     >
+        <Popup>
+        Nazwa kraju: {country} <br/>
+        liczba zachorowań: {number}
+        </Popup>
     </Marker>
 );
 
