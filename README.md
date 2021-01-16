@@ -1,36 +1,16 @@
 ## Projekt grupowy
 
-### Backend
+### Uruchomienie projektu
 
-W celu konfiguracji backendu wymagany jest PHP w wersji >= 7.2.5 oraz composer.
-Przechodzimy do katalogu backendu, a następnie wykonujemy polecenia:
+`docker-compose up`.
 
-Instalacja zależności:
-`composer install` 
+Należy jeszcze uruchomić skrypt inicjalizujący (instaluje zależności composera oraz migracje)
 
-Uruchomienie bazy danych:
-`docker-compose up -d`
+`./init-backend.sh`
 
-(można też ręcznie skonfigurować dane do bazy w pliku .env)
+Frontend działa na portcie 3000.
+Backend na portcie 80.
 
-Uruchomienie migracji:
+Dane do API znajdują się w:
 
-`./bin/console doctrine:migrations:migrate`
-
-Po tym polecenie powinny utworzyć się tabele w bazie danych.
-
-Uruchomienie serwera PHP:
-
-`php -S localhost:<port>`
-
-Inicjalizacja danych z API:
-
-`./bin/console app:load:countries` lub w przeglądarce `localhost:<port>/load/countries`
-
-Dokumentacja API:
-
-`localhost:<port>/api/doc`
-
-### Frontend
-
-Instrukcja znajduje się wewnątrz katalogu frontend.
+`localhost/api/doc`
