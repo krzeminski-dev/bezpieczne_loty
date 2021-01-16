@@ -7,9 +7,11 @@ use App\Repository\CountryRepository;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Swagger\Annotations as SWG;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Constraints\Json;
 
 class CountryAction extends AbstractController
 {
@@ -62,10 +64,22 @@ class CountryAction extends AbstractController
             ['groups' => 'basic']
         );
 
-        return new Response(
-            $json,
-            Response::HTTP_OK,
-            ['content-type' => 'text/plain']
-        );
+        $response = new JsonResponse();
+        $response->setContent($json);
+    }
+
+    /**
+     * @Route("/api/country/{id}/cases", name="api_get_country_cases", methods={"GET"})
+     * @SWG\Response(
+     *     response="200",
+     *     description="Returns country cases information",
+     *     @Model(type=App\Entity\CountryCases::class)
+     * )
+     *
+     * @SWG\Tag(name="country")
+     */
+    public function getCountryCases(Country $country)
+    {
+        return $this->json($country->getCases());
     }
 }

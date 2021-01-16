@@ -37,36 +37,37 @@ class DataLoader
         $current = 0;
 
         foreach ($data as $country) {
-            $new = new CountryCases();
-            $new->setCases($country->cases);
-            $new->setTodayCases($country->todayCases);
-            $new->setDeaths($country->deaths);
-            $new->setTodayDeaths($country->todayDeaths);
-            $new->setRecovered($country->recovered);
-            $new->setTodayRecovered($country->todayRecovered);
-            $new->setActive($country->active);
-            $new->setCritical($country->critical);
-            $new->setCasesPerOneMillion($country->casesPerOneMillion);
-            $new->setDeathsPerOneMillion($country->deathsPerOneMillion);
-            $new->setTests($country->tests);
-            $new->setTestsPerOneMillion($country->testsPerOneMillion);
-            $new->setOneCasePerPeople($country->oneCasePerPeople);
-            $new->setOneDeathPerPeople($country->oneDeathPerPeople);
-            $new->setOneTestPerPeople($country->oneTestPerPeople);
-            $new->setActivePerOneMillion($country->activePerOneMillion);
-            $new->setRecoveredPerOneMillion($country->recoveredPerOneMillion);
-            $new->setCriticalPerOneMillion($country->criticalPerOneMillion);
-
-            $new->setCountry(
-                (new Country())
-                    ->setName($country->country)
-                    ->setIso2($country->countryInfo->iso2)
-                    ->setIso3($country->countryInfo->iso3)
-                    ->setLatitude($country->countryInfo->lat)
-                    ->setLongitude($country->countryInfo->long)
-                    ->setFlag($country->countryInfo->flag)
-                    ->setPopulation($country->population)
-            );
+            
+            $new = (new Country())
+                ->setName($country->country)
+                ->setIso2($country->countryInfo->iso2)
+                ->setIso3($country->countryInfo->iso3)
+                ->setLatitude($country->countryInfo->lat)
+                ->setLongitude($country->countryInfo->long)
+                ->setFlag($country->countryInfo->flag)
+                ->setPopulation($country->population)
+                ->setCases(
+                    (new CountryCases())
+                        ->setCases($country->cases)
+                        ->setTodayCases($country->todayCases)
+                        ->setDeaths($country->deaths)
+                        ->setTodayDeaths($country->todayDeaths)
+                        ->setRecovered($country->recovered)
+                        ->setTodayRecovered($country->todayRecovered)
+                        ->setActive($country->active)
+                        ->setCritical($country->critical)
+                        ->setCasesPerOneMillion($country->casesPerOneMillion)
+                        ->setDeathsPerOneMillion($country->deathsPerOneMillion)
+                        ->setTests($country->tests)
+                        ->setTestsPerOneMillion($country->testsPerOneMillion)
+                        ->setOneCasePerPeople($country->oneCasePerPeople)
+                        ->setOneDeathPerPeople($country->oneDeathPerPeople)
+                        ->setOneTestPerPeople($country->oneTestPerPeople)
+                        ->setActivePerOneMillion($country->activePerOneMillion)
+                        ->setRecoveredPerOneMillion($country->recoveredPerOneMillion)
+                        ->setCriticalPerOneMillion($country->criticalPerOneMillion)
+                )
+            ;
 
             $continent = $country->continent;
             if (! $continents->containsKey($continent)) {
@@ -75,7 +76,7 @@ class DataLoader
 
             $continent = $continents->get($continent);
 
-            $new->getCountry()->setContinent($continent);
+            $new->setContinent($continent);
 
             $this->em->persist($new);
 

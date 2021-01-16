@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\MaxDepth;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity()
@@ -15,13 +15,9 @@ class CountryCases
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $id;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Country::class, cascade={"persist"})
-     */
-    private $country;
 
     /**
      * @ORM\Column(type="integer")
@@ -126,18 +122,6 @@ class CountryCases
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getCountry(): ?Country
-    {
-        return $this->country;
-    }
-
-    public function setCountry(?Country $country): self
-    {
-        $this->country = $country;
-
-        return $this;
     }
 
     public function getCases(): ?int

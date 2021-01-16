@@ -73,6 +73,11 @@ class Country
      */
     private $routes;
 
+    /**
+     * @ORM\OneToOne(targetEntity=CountryCases::class, cascade={"persist"})
+     */
+    private $cases;
+
     public function __construct()
     {
         $this->routes = new ArrayCollection();
@@ -202,6 +207,25 @@ class Country
         if ($this->routes->removeElement($route)) {
             $route->removeCountrySource($this);
         }
+
+        return $this;
+    }
+
+    /**
+     * @return CountryCases|null
+     */
+    public function getCases(): ?CountryCases
+    {
+        return $this->cases;
+    }
+
+    /**
+     * @param CountryCases|null $cases
+     * @return Country
+     */
+    public function setCases(?CountryCases $cases): self
+    {
+        $this->cases = $cases;
 
         return $this;
     }
