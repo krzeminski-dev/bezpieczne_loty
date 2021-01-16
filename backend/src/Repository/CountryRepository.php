@@ -16,7 +16,7 @@ class CountryRepository extends ServiceEntityRepository
     public function findCountryNames()
     {
         return $this->_em->createQueryBuilder()
-            ->select('c.name')
+            ->select('c.id, c.name')
             ->from(Country::class, 'c')
             ->orderBy('c.name', 'ASC')
             ->getQuery()

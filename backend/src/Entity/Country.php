@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
  * @ORM\Entity()
@@ -55,7 +57,7 @@ class Country
     private $population;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Continent::class, inversedBy="countries", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Continent::class, inversedBy="countries", cascade={"persist"}, fetch="EAGER")
      */
     private $continent;
 
