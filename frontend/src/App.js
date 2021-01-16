@@ -78,8 +78,8 @@ class App extends React.Component{
   }
   render(){
     return(
-      <div className="bg-gray-300 container flex flex-wrap">
-        <h1 className="container p-6 text-center text-3xl text-bold">Projekt grupowy</h1>
+      <div className="bg-gray-300 container md:mx-auto flex flex-wrap">
+        <h1 className="p-6 container text-center text-3xl text-bold">Projekt grupowy</h1>
         <Slider />
         <div className="container my-6 flex">
           <MapWrapper route={this.state.route}/>
