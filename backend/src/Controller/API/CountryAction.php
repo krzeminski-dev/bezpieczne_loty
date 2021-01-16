@@ -49,7 +49,7 @@ class CountryAction extends AbstractController
      * @SWG\Response(
      *     response="200",
      *     description="Returns country information",
-     *     @Model(type=App\Entity\Country::class)
+     *     @Model(type=App\Entity\Country::class, groups={"basic"})
      * )
      *
      * @SWG\Tag(name="country")
