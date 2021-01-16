@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\CountryRoutesGenerator;
 use App\Service\DataLoader;
 use App\Service\DiseaseApiProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,11 +13,21 @@ class TestController extends AbstractController
     /**
      * @Route("/load/countries", name="load_countries", methods={"GET"})
      */
-    public function test(
+    public function loadCountries(
         DataLoader $loader,
         DiseaseApiProvider $provider
     ) {
         $loader->load($provider->getCountries());
+
+        return $this->json('ok');
+    }
+
+    /**
+     * @Route("/load/routes", name="load_routes", methods={"GET"})
+     */
+    public function loadRoutes(CountryRoutesGenerator $generator)
+    {
+        $generator->generate();
 
         return $this->json('ok');
     }

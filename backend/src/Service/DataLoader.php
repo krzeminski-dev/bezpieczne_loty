@@ -36,6 +36,7 @@ class DataLoader
         $continents = new ArrayCollection();
         $current = 0;
 
+        $id = 1;
         foreach ($data as $country) {
             
             $new = (new Country())
@@ -66,6 +67,7 @@ class DataLoader
                         ->setActivePerOneMillion($country->activePerOneMillion)
                         ->setRecoveredPerOneMillion($country->recoveredPerOneMillion)
                         ->setCriticalPerOneMillion($country->criticalPerOneMillion)
+                        ->setCountryId($id++)
                 )
             ;
 

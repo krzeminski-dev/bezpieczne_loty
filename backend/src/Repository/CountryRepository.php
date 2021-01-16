@@ -24,4 +24,26 @@ class CountryRepository extends ServiceEntityRepository
         ;
     }
 
+    public function getCountriesAmount()
+    {
+        $qb = $this->_em->createQueryBuilder();
+        $qb
+            ->select('count(c.id) as amount')
+            ->from(Country::class, 'c')
+        ;
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
+    public function getCountriesFromPath(array $path)
+    {
+        return $this->_em->createQueryBuilder()
+            ->select('c')
+            ->from(Country::class, 'c')
+            ->where('c.id IN (:path)')
+            ->setParameter('path', $path)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

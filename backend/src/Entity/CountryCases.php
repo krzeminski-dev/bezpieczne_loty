@@ -21,6 +21,12 @@ class CountryCases
 
     /**
      * @ORM\Column(type="integer")
+     * @var integer $countryId
+     */
+    private $countryId;
+
+    /**
+     * @ORM\Column(type="integer")
      */
     private $cases;
 
@@ -348,6 +354,24 @@ class CountryCases
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCountryId(): int
+    {
+        return $this->countryId;
+    }
+
+    /**
+     * @param int $countryId
+     */
+    public function setCountryId(int $countryId): self
+    {
+        $this->countryId = $countryId;
 
         return $this;
     }

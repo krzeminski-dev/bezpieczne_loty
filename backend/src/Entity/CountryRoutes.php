@@ -30,12 +30,12 @@ class CountryRoutes
     private $countryDestination;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $possiblePath;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $createdAt;
 
@@ -43,6 +43,7 @@ class CountryRoutes
     {
         $this->countrySource = new ArrayCollection();
         $this->countryDestination = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int
