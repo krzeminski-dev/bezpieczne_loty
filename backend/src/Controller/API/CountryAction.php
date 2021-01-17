@@ -66,6 +66,8 @@ class CountryAction extends AbstractController
 
         $response = new JsonResponse();
         $response->setContent($json);
+
+        return $response;
     }
 
     /**
@@ -84,7 +86,7 @@ class CountryAction extends AbstractController
     }
 
     /**
-     * @Route("/api/route", name="get_route", methods={"POST"})
+     * @Route("/api/route", name="get_route", methods={"GET|POST"})
      * @SWG\Parameter(parameter="source", name="source", type="integer", in="query", required=true)
      * @SWG\Parameter(parameter="destination", name="destination", type="integer", in="query", required=true)
      * @SWG\Response(
@@ -107,9 +109,11 @@ class CountryAction extends AbstractController
         $provider->handleRequest($request);
 
         $path = $provider->getRoute();
+
         /** @var Country[] $countries */
         $countries = $this->getDoctrine()->getManager()->getRepository(Country::class)->getCountriesFromPath($path);
 
+        $result = [];
         // Restore original path
         foreach ($path as $id) {
             $country = array_filter($countries, function (Country $country) use ($id) {

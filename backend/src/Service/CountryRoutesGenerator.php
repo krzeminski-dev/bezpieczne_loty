@@ -3,7 +3,6 @@
 namespace App\Service;
 
 use App\Entity\Country;
-use App\Entity\CountryRoutes;
 use Doctrine\ORM\EntityManagerInterface;
 
 class CountryRoutesGenerator
@@ -23,22 +22,8 @@ class CountryRoutesGenerator
         return $this->em->getRepository(Country::class)->getCountriesAmount();
     }
 
-    private function truncateTable()
-    {
-        $cmd = $this->em->getClassMetadata(CountryRoutes::class);
-        $connection = $this->em->getConnection();
-        $dbPlatform = $connection->getDatabasePlatform();
-        $connection->executeQuery('SET FOREIGN_KEY_CHECKS=0');
-        $q = $dbPlatform->getTruncateTableSql($cmd->getTableName());
-        $connection->executeStatement($q);
-        $connection->executeQuery('SET FOREIGN_KEY_CHECKS=1');
-    }
-
     public function generate()
     {
-        // unique connections each time ;)
-        $this->truncateTable();
-
         $amount = $this->getCountriesAmount();
         $ids = range(1, $amount);
 
@@ -47,7 +32,8 @@ class CountryRoutesGenerator
         $min = 0;
         $max = $amount - 1;
 
-        for ($i = 0; $i < 200; $i++) {
+        // Should be more than 5000
+        for ($i = 0; $i < 2000; $i++) {
             $x = 1;
             $y = 1;
             $is_path = false;
