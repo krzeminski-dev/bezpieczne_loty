@@ -7,12 +7,15 @@ import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import MarkerItem from "./MarkerItem";
 import PolylineItem from "./PolylineItem";
 
+
 let DefaultIcon = L.icon({
     iconUrl: icon,
     shadowUrl: iconShadow,
 });
 
 L.Marker.prototype.options.icon = DefaultIcon;
+
+
 
 class MapWrapper extends Component{
 
@@ -27,6 +30,12 @@ class MapWrapper extends Component{
     render(){
        const position = [this.state.bell.lat, this.state.bell.lng];
 
+       const connectionColors = [
+        '#0094e3', '#245CA6', '#731953', '#73142D', '#BF2441'
+       ];
+
+       const markerColors = ['marker-blue-1', 'marker-blue-2', 'marker-violet-1', 'marker-violet-2', 'marker-red'];
+
         return(
             <div className="py-6 w-9/12 flex-shrink mx-6 map__wrapper">
                 <MapContainer 
@@ -39,22 +48,15 @@ class MapWrapper extends Component{
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     />
-                    {/* @todo: connection between markers */}
-                        {/* almost done */}
-                            
+         
 
-                    {this.props.route.map(item => (
-                        <MarkerItem {...item}/>
-                    ))}
+                    {this.props.sampleRoutes.map((route, routeId) =>
+                        (route.onMap === true ? (route.markers.map((marker, index) => (<MarkerItem route={route.markers} id={index} color={markerColors[routeId]} {...marker}/>))) : null)
+                        )}
 
-
-                    {this.props.route.map((connection, index) => (
-                        <PolylineItem coords={this.props.route} id={index}/>
-                    ))}
-                        
-                          
-                  
-
+                    {this.props.sampleRoutes.map((route, routeId) => 
+                    (route.onMap === true ? (route.markers.map((marker, index) => <PolylineItem color={connectionColors[routeId]} coords={route.markers} id={index}/>)) : null)
+                    )}
 
                 </MapContainer>
             </div>

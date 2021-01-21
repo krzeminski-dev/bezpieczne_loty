@@ -17,8 +17,7 @@ const ListItem = ({
             <p>{y}</p>
             <p>{country}</p>
             <p>{number}</p>
-            {/* <p>{to[0]}</p>
-            <p>{to[1]}</p>   */}
+
         </div>
     </li>
 );

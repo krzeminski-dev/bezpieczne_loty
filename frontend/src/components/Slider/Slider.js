@@ -4,14 +4,6 @@ import slide1 from '../../assets/images/slide1-sky.jpg';
 import slide2 from '../../assets/images/slide2-writing.jpg';
 import slide3 from '../../assets/images/slide3-virus.jpg';
 
-// const Slider = () => (
-//     <div className="slider container grid place-content-center bg-gray-400 p-6">
-//         <p>Slider</p>
-//     </div>
-// );
-
-// export default Slider;
-
 const slides = [
     {
         image: slide1,
@@ -48,7 +40,6 @@ class Slider extends Component{
         const {slides, active} = this.state;
         let styles = {
             backgroundImage: `url(${slides[active].image})`,
-            //left: `${active*100}%`
         }
         return(
             <div className="outerWrap relative container  shadow-sm  bg-gray-500">

@@ -7,86 +7,51 @@ import ListWrapper from './components/ListWrapper/ListWrapper';
 import Form from './components/Form/Form';
 import Footer from './components/Footer/Footer';
 import MapWrapper from "./components/MapWrapper/MapWrapper";
+import {sample} from "./SampleRoutes";
 
-const connections = [
+const tempoHelper = [1,2,3,4];
 
-  // {
-  //   from: [1, 5],
-  //   to: [2, 10]
-  // },
-  // {
-  //   from: [3, 6],
-  //   to: [9, 12]
-  // }
-
-];
 
 class App extends React.Component{
 
-  state = {
-    // connections: [...connections], 
+  state = { 
     route: [], 
+    tempo: [...tempoHelper],
+    sampleRoutes: []
   }
 
-  setRoute = (e) => {
+  setRoute = (e) => { 
     e.preventDefault();
 
-     const newRoute = [
-        {
-          x: 10,
-          y: 10,
-          country: e.target[0].value,
-          number: 999
-        },
-        {
-          x: 70,
-          y: 70,
-          country: 'other country',
-          number: 9999
-        },
-        {
-          x: 40,
-          y: 60,
-          country: e.target[1].value,
-          number: 69
-        },
-        {
-          x: 70,
-          y: 170,
-          country: 'another country',
-          number: 669
-        }
-     ];
-
      this.setState({
-      route: [...newRoute],
-    });
+      sampleRoutes: [...sample]
+   });
 
-       //from: [e.target[0].value, e.target[1].value],
-       //to: [e.target[2].value, e.target[3].value]
-    //  };
-
-
-    // this.setState(prevState => ({
-    //   connections: [...prevState.connections, newItem],
-    // })) 
-
-    
-
-    //zwraca tablice punktow x,y,nazwa,liczba zachorowan
     e.target.reset();
   }
+
+    handleCheck = (index) => {
+     this.setState(prevState=> ({
+       sampleRoutes: prevState.sampleRoutes.map( (el, id) => (id === index ? {...el, onMap: !el.onMap} : el))
+     }))
+      console.log(this.state.sampleRoutes[index].onMap);
+       console.log(index);
+
+    }
+
   render(){
     return(
       <div className="bg-gray-300 container md:mx-auto flex flex-wrap">
         <h1 className="p-6 container text-center text-3xl text-bold">Projekt grupowy</h1>
         <Slider />
         <div className="container my-6 flex">
-          <MapWrapper route={this.state.route}/>
-          {/* <Form2 submitFn={this.setRoute}/> */}
+          <MapWrapper route={this.state.route} sampleRoutes={this.state.sampleRoutes}/>
           <Form submitFn={this.setRoute}/>
         </div>
-        <Result route={this.state.route}/>
+        <Result route={this.state.route} 
+                tempo={this.state.tempo} 
+                sampleRoutes={this.state.sampleRoutes}
+                checkHandler={this.handleCheck} />
         <Footer />
       </div>
     );

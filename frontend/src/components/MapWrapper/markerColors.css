@@ -1,0 +1,19 @@
+.main-marker{
+    filter: grayscale(100%);
+}
+
+.marker-blue-2{
+    filter: hue-rotate(30deg);
+}
+
+.marker-violet-1{
+    filter: hue-rotate(45deg);
+}
+
+.marker-violet-2{
+    filter: hue-rotate(75deg);
+}
+
+.marker-red{
+    filter: hue-rotate(120deg);
+}
