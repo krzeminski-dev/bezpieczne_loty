@@ -1,6 +1,5 @@
 import React from 'react';
 import './ListItem.css';
-import PropTypes from 'prop-types';
 
 
 

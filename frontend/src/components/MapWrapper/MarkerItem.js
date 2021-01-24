@@ -10,8 +10,6 @@ const MarkerItem = ({x, y, country, number, color, id, route}) => {
     ((id === 0) || (id === route.length-1)) ? 
          customMarker = L.icon({ iconUrl: icon, className: 'main-marker', iconSize: [32,44]}) 
         : customMarker = L.icon({ iconUrl: icon, className: color});
-    
-
 
     return(
         <Marker position={[x, y]} icon={customMarker}>
@@ -25,7 +23,5 @@ const MarkerItem = ({x, y, country, number, color, id, route}) => {
         )
         
 };
-   
-
 
 export default MarkerItem;
