@@ -22,7 +22,7 @@ class CountryRoutesGenerator
         return $this->em->getRepository(Country::class)->getCountriesAmount();
     }
 
-    public function generate()
+    public function generate($number)
     {
         $amount = $this->getCountriesAmount();
         $ids = range(1, $amount);
@@ -33,7 +33,7 @@ class CountryRoutesGenerator
         $max = $amount - 1;
 
         // Should be more than 5000
-        for ($i = 0; $i < 2000; $i++) {
+        for ($i = 0; $i < $number; $i++) {
             $x = 1;
             $y = 1;
             $is_path = false;

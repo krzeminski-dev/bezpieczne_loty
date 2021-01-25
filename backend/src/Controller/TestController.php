@@ -23,11 +23,11 @@ class TestController extends AbstractController
     }
 
     /**
-     * @Route("/load/routes", name="load_routes", methods={"GET"})
+     * @Route("/load/routes/{number}", name="load_routes", methods={"GET"})
      */
-    public function loadRoutes(CountryRoutesGenerator $generator)
+    public function loadRoutes(CountryRoutesGenerator $generator, int $number = 200)
     {
-        $generator->generate();
+        $generator->generate($number);
 
         return $this->json('ok');
     }
