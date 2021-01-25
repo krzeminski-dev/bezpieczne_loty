@@ -22,7 +22,7 @@ class CountryRoutesGenerator
         return $this->em->getRepository(Country::class)->getCountriesAmount();
     }
 
-    public function generate($number)
+    public function generate(int $number = 200)
     {
         $amount = $this->getCountriesAmount();
         $ids = range(1, $amount);
