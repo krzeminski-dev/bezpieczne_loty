@@ -48,7 +48,15 @@ class MapWrapper extends Component {
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     />
 
+{this.props.route.map(el => (
+    <MarkerItem coords={[el.latitude, el.longitude]} />
+))}
 
+{this.props.route.map((el, index) => (
+    <PolylineItem route={this.props.route}
+                  id={index} 
+    />
+))}
                     {/*{this.props.path.map((value, id) =>*/}
                     {/*    (route.onMap === true ? (route.markers.map((marker, index) => (*/}
                     {/*        <MarkerItem route={route.markers} id={index}*/}

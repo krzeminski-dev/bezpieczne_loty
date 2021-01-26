@@ -16,7 +16,7 @@ class Form extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost/api/countries")
+        fetch("http://172.20.0.5/api/countries")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -24,7 +24,7 @@ class Form extends React.Component {
                         isLoaded: true,
                         countries: result.map( country => ({
                             value: country.id,
-                            label: country.name
+                            label: country.name,
                         }))
                     });
                 },

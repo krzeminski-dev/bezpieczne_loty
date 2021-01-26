@@ -1,17 +1,18 @@
 import React from 'react';
 import {Polyline} from 'react-leaflet';
 
-const PolylineItem = ({color, coords, id}) => ( //x2, y2
-    (id !== coords.length-1) ? 
+//const PolylineItem = ({color, coords, id}) => ( //x2, y2
+const PolylineItem = ({route, id}) => ( //x2, y2
+    (id !== route.length-1) ? 
     (<Polyline 
-        positions={[[coords[id].x, coords[id].y], [coords[id+1].x, coords[id+1].y]]} 
-        color={color} 
+        positions={[[route[id].latitude, route[id].longitude], [route[id+1].latitude, route[id+1].longitude]]} 
+        color={'#0094e3'} 
         weight={'2'}
         dashArray={'5, 5'}/>)
     :
     (<Polyline 
-        positions={[[coords[id].x, coords[id].y], [coords[id].x, coords[id].y]]} 
-        color={color} 
+        positions={[[route[id].latitude, route[id].longitude], [route[id].latitude, route[id].longitude]]} 
+        color={'#0094e3'} 
         weight={'2'}
         dashArray={'5, 5'}/>)
 
