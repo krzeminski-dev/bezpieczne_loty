@@ -38,11 +38,11 @@ class Form extends React.Component {
     }
 
     handleSourceChange = selectedOption => {
-        this.setState({source: this.state.countries[selectedOption.value]})
+        this.setState({source: this.state.countries[selectedOption.value - 1]})
     };
 
     handleDestinationChange = selectedOption => {
-        this.setState({destination: this.state.countries[selectedOption.value]})
+        this.setState({destination: this.state.countries[selectedOption.value - 1]})
     };
 
     // Send data to parent App component

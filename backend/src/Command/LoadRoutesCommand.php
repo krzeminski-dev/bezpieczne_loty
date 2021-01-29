@@ -4,6 +4,7 @@ namespace App\Command;
 
 use App\Service\CountryRoutesGenerator;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
@@ -27,6 +28,7 @@ class LoadRoutesCommand extends Command
     {
         $this
             ->setDescription('Generate random connections between countries')
+            ->addArgument('amount', InputArgument::OPTIONAL, 'Amount of connections')
         ;
     }
 
@@ -34,7 +36,13 @@ class LoadRoutesCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $this->generator->generate();
+        $amount = $input->getArgument('amount');
+
+        if ($amount) {
+            $this->generator->generate($amount);
+        } else {
+            $this->generator->generate();
+        }
 
         $io->success('Successfully saved country routes to database!');
 

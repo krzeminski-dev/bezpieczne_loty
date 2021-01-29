@@ -1,23 +1,35 @@
-import React from 'react';
-import CheckboxItem from './CheckboxItem';
+import React, {Component} from 'react';
 
-const ResultItem = ({onMap, markers, checkHandler, index}) => (
-   
-   <>
-    {index === 0 && <h2 className="text-2xl">Najkorzystniejsza trasa</h2>}
-    {index === 1 && <h3 className="text-2xl">Trasy alternatywne</h3>}
+class ResultItem extends Component
+{
+    getCases() {
+        let cases = <></>;
 
-    <div className="my-6">
-        <p>Czy jest na mapie: {onMap ? 1 : 0}</p>
-        <div className="flex">
-        {markers.map(el => <p>{el.country}, {el.x}, {el.y}</p>)}
-        </div>
-            <CheckboxItem isChecked={onMap} 
-                          index={index}
-                          checkHandler={checkHandler}/>
-    </div>
-    </>
+        if (this.props.cases) {
+            cases = <>
+                <p className="text-red-700">Zakażenia łączne: {this.props.cases.cases}</p>
+                <p className="text-red-700">Zakażenia aktywne: {this.props.cases.active}</p>
+            </>
+        }
 
-);
+        return cases;
+    }
+
+    render() {
+        return (
+            <div className="p-6 bg-white rounded-xl shadow-md flex items-center space-x-4 mr-4">
+                <div>
+                    <div className="text-xl font-black font-medium text-black">{this.props.index + 1}. {this.props.name}</div>
+                    <p className="text-gray-700">Populacja: {this.props.population}</p>
+                    {this.getCases()}
+                </div>
+            </div>
+        );
+    }
+}
+
+ResultItem.defaultProps = {
+    cases: null,
+}
 
 export default ResultItem;

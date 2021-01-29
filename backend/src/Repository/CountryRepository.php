@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Country;
+use App\Entity\CountryCases;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

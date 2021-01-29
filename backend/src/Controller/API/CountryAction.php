@@ -3,6 +3,7 @@
 namespace App\Controller\API;
 
 use App\Entity\Country;
+use App\Entity\CountryCases;
 use App\Repository\CountryRepository;
 use App\Service\CountryRoutesProvider;
 use Nelmio\ApiDocBundle\Annotation\Model;

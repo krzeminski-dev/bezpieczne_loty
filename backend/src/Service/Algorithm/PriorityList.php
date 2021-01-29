@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\ShitCode;
+namespace App\Service\Algorithm;
 
 class PriorityList {
     public $next;

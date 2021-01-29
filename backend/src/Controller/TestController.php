@@ -23,9 +23,9 @@ class TestController extends AbstractController
     }
 
     /**
-     * @Route("/load/routes/{number}", name="load_routes", methods={"GET"})
+     * @Route("/load/routes/{number}", name="load_routes", methods={"GET"}, defaults={"number" = 200})
      */
-    public function loadRoutes(CountryRoutesGenerator $generator, int $number = 200)
+    public function loadRoutes(CountryRoutesGenerator $generator, int $number)
     {
         $generator->generate($number);
 

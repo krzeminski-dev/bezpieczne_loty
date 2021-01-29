@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import L from 'leaflet';
-import {MapContainer, TileLayer, Polyline} from 'react-leaflet';
+import {MapContainer, TileLayer} from 'react-leaflet';
 import './MapWrapper.css';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import MarkerItem from "./MarkerItem";
 import PolylineItem from "./PolylineItem";
-import * as path from "path";
 
 let DefaultIcon = L.icon({
     iconUrl: icon,
@@ -49,16 +48,16 @@ class MapWrapper extends Component {
                     />
 
 
-                    {/*{this.props.path.map((value, id) =>*/}
-                    {/*    (route.onMap === true ? (route.markers.map((marker, index) => (*/}
-                    {/*        <MarkerItem route={route.markers} id={index}*/}
-                    {/*                    color={markerColors[routeId]} {...marker}/>))) : null)*/}
-                    {/*)}*/}
+                    {this.props.route.map(el => (
+                        <MarkerItem coords={[el.latitude, el.longitude]}/>
+                    ))}
 
-                    {/*{this.props.sampleRoutes.map((route, routeId) =>*/}
-                    {/*    (route.onMap === true ? (route.markers.map((marker, index) => <PolylineItem*/}
-                    {/*        color={connectionColors[routeId]} coords={route.markers} id={index}/>)) : null)*/}
-                    {/*)}*/}
+                    {this.props.route.map((el, index) => (
+                        <PolylineItem
+                            route={this.props.route}
+                            id={index}
+                        />
+                    ))}
 
                 </MapContainer>
             </div>

@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use App\Service\ShitCode\Graph;
+use App\Service\Algorithm\Graph;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 

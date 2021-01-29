@@ -75,6 +75,7 @@ class Country
 
     /**
      * @ORM\OneToOne(targetEntity=CountryCases::class, cascade={"persist"})
+     * @Groups({"basic"})
      */
     private $cases;
 

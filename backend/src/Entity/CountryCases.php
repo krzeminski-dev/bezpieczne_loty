@@ -15,7 +15,6 @@ class CountryCases
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"basic"})
      */
     private $id;
 
@@ -27,96 +26,115 @@ class CountryCases
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $cases;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $todayCases;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $deaths;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $todayDeaths;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $recovered;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $todayRecovered;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $active;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $critical;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $casesPerOneMillion;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $deathsPerOneMillion;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $tests;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $testsPerOneMillion;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $oneCasePerPeople;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $oneDeathPerPeople;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"basic"})
      */
     private $oneTestPerPeople;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"basic"})
      */
     private $activePerOneMillion;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"basic"})
      */
     private $recoveredPerOneMillion;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"basic"})
      */
     private $criticalPerOneMillion;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"basic"})
      */
     private $updatedAt;
 
