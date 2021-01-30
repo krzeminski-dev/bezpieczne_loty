@@ -37,12 +37,20 @@ class Form extends React.Component {
             )
     }
 
+    findCountry = (selectedOption) => {
+        const source = this.state.countries.filter((country) => {
+            return country.value === selectedOption.value;
+        }, selectedOption);
+
+        return source[0];
+    }
+
     handleSourceChange = selectedOption => {
-        this.setState({source: this.state.countries[selectedOption.value - 1]})
+        this.setState({source: this.findCountry(selectedOption)})
     };
 
     handleDestinationChange = selectedOption => {
-        this.setState({destination: this.state.countries[selectedOption.value - 1]})
+        this.setState({destination: this.findCountry(selectedOption)})
     };
 
     // Send data to parent App component
