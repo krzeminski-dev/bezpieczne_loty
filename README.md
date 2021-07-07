@@ -1,4 +1,10 @@
-## Projekt grupowy
+# Aplikacja nawigacyjna do wyznaczania bezpiecznej trasy lotu (względem COVID-19)
+
+## Projekt grupowy - Politechnika Gdańska - 5 semestr
+
+_#react, #php, #tailwind, #leaflet_
+
+![grupowy](https://user-images.githubusercontent.com/65785726/124830608-6e08b280-df7a-11eb-87e8-5a45caea0765.jpg)
 
 ### Uruchomienie projektu
 
