@@ -1,0 +1,20 @@
+.outerWrap{
+    overflow: hidden;
+}
+
+.slider{
+    height: 45vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.slider__content{
+    background: rgba(0,0,0,.67);
+}
+
+.slider__text{
+    bottom: 2rem;
+    left: 2rem;
+}

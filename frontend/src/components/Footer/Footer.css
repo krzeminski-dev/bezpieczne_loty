@@ -1,0 +1,19 @@
+ /* .footer__icon{
+    height: 100px;
+    width: 100px;
+} */
+/* */
+/* .footer__content{
+    position: relative;
+}
+
+.footer__content::before{
+    content: url('../../assets/images/plane-icon.svg');
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top:0;
+    left:0;
+    display: block;
+
+} */
